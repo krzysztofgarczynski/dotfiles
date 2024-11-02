@@ -1,0 +1,17 @@
+[manager]
+show_hidden = false
+show_symlinks = true
+sort_by = "natural"
+sort_sensitive = true
+sort_dir_first = true
+
+[open]
+edit = { run = 'nvim $@', block = true, orphan = true, desc = "nvim"}
+
+play = [
+  { run = 'mpv "$@"', orphan = true, for = "unix"},
+  { run = 'open -a OmniPlayerPro "$0"', orphan = true, for = "macos"}
+]
+
+[tasks]
+image_alloc = 0
