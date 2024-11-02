@@ -74,4 +74,27 @@ return {
       "MunifTanjim/nui.nvim",
     }
   },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<leader>yi",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>ycw",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory" ,
+      },
+    },
+    opts = {
+      open_for_directories = false,
+      keymaps = {
+        show_help = '<f1>',
+      }
+    }
+  },
 }
