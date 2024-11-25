@@ -1,0 +1,2 @@
+--type-set=bitbake:ext:bb,bbappend,inc
+--type-set=bitbakeconf:ext:conf
