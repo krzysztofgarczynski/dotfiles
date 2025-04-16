@@ -1,0 +1,101 @@
+{
+  "position": "top", 
+  "height": 44,
+  "margin-botton": 1,
+  "spacing": 0,
+  "modules-left": [ "hyprland/window"],
+  "modules-center": ["hyprland/workspaces", "mpris"],
+  "modules-right" : ["tray", "cpu", "network", "pulseaudio", "clock#date", "clock"],
+
+  // Modules configuration
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 3
+    }
+  },
+
+  "mpris": {
+    "format": "{player_icon} {artist}",
+    "player-icons": {  
+  		"default": "▶",
+	  	"mpv": "🎵"
+  	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+  },
+
+  "hyprland/window": {
+    "rewrite": {
+      "(.*) - Google Chrome": "Google Chrome",
+      "(.*) Microsoft Teams": "Brave",
+      "(.*) - Brave": "$1"
+    },
+    "separate-outputs": true
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+  },
+
+  "clock#date": {
+    "interval": 20,
+    "format": " {:%a %e/%m}",
+    "on-click": "gnome-calendar"
+  },
+
+  "clock": {
+    "format": "󰅐 {:%H:%M} ",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": " {ipaddr}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󰤮 Disconnected",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+  },
+
+  "pulseaudio": {
+    "on-click": "pactl set-sink-mute 45 toggle",
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰖁 Muted",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+
+  "cpu": {
+    "interval": 10,
+    "format": "󰍛 {usage}%",
+    "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+  }
+}
