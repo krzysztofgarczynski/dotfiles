@@ -1,4 +1,4 @@
-set -g -x PATH /usr/local/bin /bin /usr/sbin /usr/bin/vendor_perl/ /opt/homebrew/bin/ $PATH
+set -g -x PATH /usr/local/bin /bin /usr/sbin /usr/bin/vendor_perl/ /opt/homebrew/bin/ $HOME/.go/bin $PATH
 set -x GOPATH $HOME/.go
 set -x TERM "tmux-256color"
 
@@ -14,7 +14,7 @@ alias ls "ls -G --color"
 alias ll "ls -Gthor"
 alias excuse "echo `telnet bofh.jeffballard.us 666 2>/dev/null` |grep --color -o"
 alias vim "nvim"
-alias svim "sudo nvim"
+alias svim "sudo -E -s nvim"
 alias grep "grep --color=always"
 alias top "htop"
 alias code "code --user-data-dir=~/.vscode"
