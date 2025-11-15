@@ -1,15 +1,25 @@
-local nvlsp = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
+local servers = { 
+  clangd = {},
+  bashls = {},
+  cmake = {},
+  djlsp = {},
+  docker_language_server = {},
+  fish_lsp = {},
+  html = {},
+  htmx = {},
+  jsonls = {},
+  bitbake_language_server = {},
+  lua_ls = {},
+  marksman = {},
+  pylsp = {},
+  rust_analyzer = {},
+  tinymist = {},
+  codelldb = {},
+  cortex_debug = {},
+  clang_format = {},
+}
 
-nvlsp.defaults()
-
-local servers = { "clangd", "pylsp" }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
+for name, opts in pairs(servers) do
+  vim.lsp.config(name, opts)
+  vim.lsp.enable(name)
 end
-

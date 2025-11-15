@@ -4,6 +4,9 @@ require "nvchad.options"
 
 local o = vim.o
 
+o.backup = false
+o.swapfile = false
+o.diffopt = "internal,filler,closeoff,linematch:60"
 o.list = true
 o.listchars = "tab:>-,trail:-"
 o.foldenable = false

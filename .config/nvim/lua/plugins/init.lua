@@ -4,15 +4,12 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
   },
-
   {
   	"nvim-treesitter/nvim-treesitter",
   	opts = {
@@ -22,7 +19,6 @@ return {
   		},
   	},
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -34,11 +30,9 @@ return {
       }
     }
   },
-
   {
       "luckasRanarison/clear-action.nvim",
   },
-
   {
     "rust-lang/rust.vim",
     ft = "rust",
@@ -46,7 +40,6 @@ return {
       vim.g.rustfmt_autosave = 1
     end
   },
-
   {
     "kdheepak/lazygit.nvim",
     cmd = {
@@ -60,36 +53,13 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
-
   {
     "charludo/projectmgr.nvim",
     lazy = false,
   },
-
-  {
-    "crnvl96/lazydocker.nvim",
-    event = "VeryLazy",
-    opts = {},  -- automatically calls `require("lazydocker").setup()`
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    }
-  },
   {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",
-    keys = {
-      {
-        "<leader>yi",
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>ycw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory" ,
-      },
-    },
     opts = {
       open_for_directories = false,
       keymaps = {
@@ -97,4 +67,47 @@ return {
       }
     }
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "thehamsta/nvim-dap-virtual-text"
+    },
+  },
+  {
+    "hedyhli/outline.nvim",
+    cmd = {
+      "Outline",
+      "OutlineOpen",
+    },
+    opts = {},
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects/", "~/Downloads"},
+    }
+  },
+  {
+    "shahshlok/vim-coach.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = function()
+      require("vim-coach").setup()
+    end,
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = function()
+        require("tiny-inline-diagnostic").setup()
+        vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+    end,
+    opts = {
+      multilines = {enabled = true},
+      show_source = {enabled = true},
+      add_messages = {display_count = true},
+    },
+  }
 }
